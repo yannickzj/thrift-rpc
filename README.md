@@ -8,9 +8,10 @@ This project aims to build a scalable distributed system for computing the bcryp
 
 The system comprises a front end (FE) layer and a back end (BE) layer. The FE layer accepts connections from clients and forward requests to the BE layer in a manner that balances load. The BE layer is distributed horizontally for scalability.
 
+The software architecture is shown in the following figure. Clients only talk to the FE node, and the FE node talks to the clients and BE nodes.
+
 <p align="center"><img src="/README/architecture.png" width="600"></p>
 
-Clients only talk to the FE node, and the FE node talks to the clients and BE nodes.
 
 ## Functionality
 
