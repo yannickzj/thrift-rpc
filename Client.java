@@ -16,7 +16,7 @@ public class Client {
 
     public static void main(String[] args) {
         if (args.length != 5) {
-            System.err.println("Usage: java Client FE_host FE_port password");
+            System.err.println("Usage: java Client FE_host FE_port password size logRound");
             System.exit(-1);
         }
 
@@ -34,16 +34,16 @@ public class Client {
             for (int i = 0; i < Integer.parseInt(args[3]); i++)
                 password.add(args[2]);
 
-            //log.info("pw: " + password);
+            log.info("pw: " + password);
             long start = System.currentTimeMillis();
             List<String> hash = client.hashPassword(password, (short) Integer.parseInt(args[4]));
-            //System.out.println("elapsed time: " + (System.currentTimeMillis() - start));
-            //System.out.println("---");
+            System.out.println("elapsed time: " + (System.currentTimeMillis() - start));
+            System.out.println("---");
             client.checkPassword(password, hash);
-            //System.out.println("Password: " + password.get(0));
-            //System.out.println("Hash: " + hash.get(0));
-            //System.out.println("Positive check: " + client.checkPassword(password, hash));
-            //System.out.println("---");
+            System.out.println("Password: " + password.get(0));
+            System.out.println("Hash: " + hash.get(0));
+            System.out.println("Positive check: " + client.checkPassword(password, hash));
+            System.out.println("---");
 
 			/*
             hash.set(0, "$2a$14$reBHJvwbb0UWqJHLyPTVF.6Ld5sFRirZx/bXMeMmeurJledKYdZmG");

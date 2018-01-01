@@ -104,7 +104,7 @@ public class YJClient {
 
     public static void main(String[] args) {
         if (args.length != 7) {
-            System.err.println("Usage: java Client FE_host FE_port password pwdlen size logRound thread");
+            System.err.println("Usage: java YJClient FE_host FE_port password pwdlen size logRound threadNum");
             System.exit(-1);
         }
         String hostName = args[0];

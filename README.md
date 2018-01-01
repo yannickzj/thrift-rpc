@@ -58,3 +58,21 @@ The FE node will be restarted eventually after each failure. BE nodes may be res
 
 ## How to run the system
 
+Launch the FE process as follows:
+```
+java -cp .:gen-java/:"lib/*" FENode <FE_port>
+```
+
+Each BE process can be launched as follows:
+```
+java -cp .:gen-java/:"lib/*" BENode <FE_host> <FE_port> <BE_port>
+```
+
+Different client processes can be launched as follows:
+```
+java -cp .:gen-java/:"lib/*" Client <FE_host> <FE_port> <password> <batchSize> <logRound>
+java -cp .:gen-java/:"lib/*" YJClient <FE_host> <FE_port> <password> <pwdlen> <batchSize> <logRound> <threadNum>
+java -cp .:gen-java/:"lib/*" JJClient <FE_host> <FE_port> <batchSize1> <batchSize2> <pwdLen> <logRound> <threadNum>
+```
+
+`Client` is the basic client process. `YJClient` measures the elapsed runtime, and `JJClient` performs positive, negative and exception checks.
