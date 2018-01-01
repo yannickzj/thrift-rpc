@@ -13,28 +13,28 @@ public class FENode {
 
     static Logger log = LoggerFactory.getLogger(FENode.class.getName());
 
-    public static void main(String [] args) throws Exception {
-		if (args.length != 1) {
-	    	System.err.println("Usage: java FENode FE_port");
-	    	System.exit(-1);
-		}
+    public static void main(String[] args) throws Exception {
+        if (args.length != 1) {
+            System.err.println("Usage: java FENode FE_port");
+            System.exit(-1);
+        }
 
-		BasicConfigurator.configure();
+        BasicConfigurator.configure();
 
-		int portFE = Integer.parseInt(args[0]);
-		log.info("Launching FE node on port " + portFE);
+        int portFE = Integer.parseInt(args[0]);
+        log.info("Launching FE node on port " + portFE);
 
-		// launch Thrift server
-		BcryptServiceHandler handler = new BcryptServiceHandler();
-		BcryptService.Processor processor = new BcryptService.Processor(handler);
-		TNonblockingServerSocket socket = new TNonblockingServerSocket(portFE);
-		THsHaServer.Args sargs = new THsHaServer.Args(socket);
-		sargs.protocolFactory(new TBinaryProtocol.Factory());
-		sargs.transportFactory(new TFramedTransport.Factory());
-		sargs.processorFactory(new TProcessorFactory(processor));
-		sargs.maxWorkerThreads(32);
-		TServer server = new THsHaServer(sargs);
-		server.serve();
+        // launch Thrift server
+        BcryptServiceHandler handler = new BcryptServiceHandler();
+        BcryptService.Processor processor = new BcryptService.Processor(handler);
+        TNonblockingServerSocket socket = new TNonblockingServerSocket(portFE);
+        THsHaServer.Args sargs = new THsHaServer.Args(socket);
+        sargs.protocolFactory(new TBinaryProtocol.Factory());
+        sargs.transportFactory(new TFramedTransport.Factory());
+        sargs.processorFactory(new TProcessorFactory(processor));
+        sargs.maxWorkerThreads(32);
+        TServer server = new THsHaServer(sargs);
+        server.serve();
     }
 
 }

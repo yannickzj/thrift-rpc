@@ -34,7 +34,7 @@ public class JJClient {
         CountDownLatch latch;
 
         StartNewRPCTask(String threadName, String hostName, int portNumber, int batchSize1, int batchSize2, int pwdLen, short logRounds,
-                        CountDownLatch latch){
+                        CountDownLatch latch) {
             this.threadName = threadName;
             this.hostName = hostName;
             this.portNumber = portNumber;
@@ -83,9 +83,9 @@ public class JJClient {
 
                 String logFile = "tmp/" + threadName + ".log";
                 File file = new File(logFile);
-                if(file.exists()) file.delete();
+                if (file.exists()) file.delete();
                 try {
-                    if(!file.exists()) file.createNewFile();
+                    if (!file.exists()) file.createNewFile();
                     Files.write(Paths.get(logFile), hash1.toString().getBytes(), StandardOpenOption.APPEND);
                     Files.write(Paths.get(logFile), "\n".getBytes(), StandardOpenOption.APPEND);
                     Files.write(Paths.get(logFile), hash2.toString().getBytes(), StandardOpenOption.APPEND);
@@ -100,7 +100,7 @@ public class JJClient {
                     Files.write(Paths.get(logFile), "\n".getBytes(), StandardOpenOption.APPEND);
                     Files.write(Paths.get(logFile), sumary.getBytes(), StandardOpenOption.APPEND);
                     Files.write(Paths.get(logFile), "\n".getBytes(), StandardOpenOption.APPEND);
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -112,8 +112,8 @@ public class JJClient {
         }
 
         public void start() {
-            if(t == null) {
-                t = new Thread (this, threadName);
+            if (t == null) {
+                t = new Thread(this, threadName);
                 t.start();
             }
         }
@@ -137,13 +137,13 @@ public class JJClient {
         int threadNumber = Integer.parseInt(args[6]);
         CountDownLatch latch = new CountDownLatch(threadNumber);
 
-        for(int i = 0; i < threadNumber; i ++){
+        for (int i = 0; i < threadNumber; i++) {
             JJClient.StartNewRPCTask task = new JJClient.StartNewRPCTask("client_" + i, hostName, portNumber, batchSize1, batchSize2, pwdLen, logRound, latch);
             task.start();
         }
         try {
             latch.await();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

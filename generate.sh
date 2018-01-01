@@ -10,4 +10,4 @@ rm -fr gen-java
 
 echo --- Compiling Thrift IDL
 $THRIFT_CC --version
-$THRIFT_CC --gen java a1.thrift
+$THRIFT_CC --gen java rpc.thrift

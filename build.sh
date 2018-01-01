@@ -13,7 +13,7 @@ rm -f tmp/*.log
 
 echo --- Compiling Thrift IDL
 $THRIFT_CC --version
-$THRIFT_CC --gen java a1.thrift
+$THRIFT_CC --gen java rpc.thrift
 
 echo --- Compiling Java
 $JAVA_CC -version
