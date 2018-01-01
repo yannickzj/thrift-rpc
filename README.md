@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project aims to build a scalable distributed system for computing the bcrypt key derivation function, which is a popular technique for securing passwords in web applications.
+This project aims to build a scalable distributed system for computing the bcrypt key derivation function, which is a popular technique for securing passwords in web applications. The system can scale nearly linearly in terms of performance and support on-the-fly addition of back end nodes.
 
 ## Architecture
 
